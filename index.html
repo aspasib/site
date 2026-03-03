@@ -10,11 +10,9 @@
   <style>
     :root{
       --bg:#0b1220;
-      --card:#0f1b33;
       --muted:#b8c4dd;
       --text:#eef3ff;
       --brand:#2dd4bf;
-      --brand2:#60a5fa;
       --line:rgba(255,255,255,.12);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
@@ -31,25 +29,30 @@
     }
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+
+    /* NAV */
     .nav{
       position:sticky;top:0;z-index:20;
       backdrop-filter: blur(10px);
       background: rgba(11,18,32,.62);
       border-bottom: 1px solid var(--line);
     }
-    .nav-inner{display:flex;align-items:center;gap:16px;justify-content:space-between;max-width:var(--max);margin:0 auto;padding:14px 24px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
-    .logo{
-      width:42px;height:42px;border-radius:12px;
-      background: linear-gradient(135deg, rgba(96,165,250,.9), rgba(45,212,191,.85));
-      box-shadow: var(--shadow);
-      display:grid;place-items:center;
-      font-weight:800;
-      letter-spacing:.5px;
-      color:#081226;
+    .nav-inner{
+      display:flex;align-items:center;gap:16px;justify-content:space-between;
+      max-width:var(--max);margin:0 auto;padding:14px 24px
     }
-    .brand h1{font-size:14px;margin:0}
-    .brand p{font-size:12px;margin:0;color:var(--muted)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .logo-img{
+      height:42px;width:auto;max-width:240px;
+      border-radius:12px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.18);
+      padding:6px 10px;
+      box-shadow: var(--shadow);
+      object-fit: contain;
+    }
+    .brand-text{display:none} /* logo-ul conține deja text; păstrăm meniu aerisit */
+
     .links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
     .links a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px}
     .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
@@ -71,25 +74,23 @@
     .btn.primary:hover{background: linear-gradient(135deg, rgba(96,165,250,.26), rgba(45,212,191,.26))}
     .menu-btn{display:none}
 
-    /* Hero */
+    /* HERO */
     .hero{padding:48px 0 10px}
     .hero-grid{display:grid;grid-template-columns: 1.2fr .8fr;gap:22px;align-items:stretch}
     .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--line);
       border-radius: var(--radius);
       padding:26px;
       box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute;inset:-120px -120px auto auto;
-      width:320px;height:320px;
-      background: radial-gradient(circle at 30% 30%, rgba(45,212,191,.35), transparent 62%);
-      transform: rotate(12deg);
-      pointer-events:none;
+
+      /* imagine free Unsplash + overlay pentru lizibilitate */
+      background:
+        linear-gradient(rgba(11,18,32,.78), rgba(11,18,32,.78)),
+        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80');
+      background-size:cover;
+      background-position:center;
     }
     .kicker{
       display:inline-flex;gap:8px;align-items:center;
@@ -130,7 +131,7 @@
     .pill b{display:block;font-size:13px;margin-bottom:2px}
     .pill span{display:block;color:var(--muted);font-size:12px}
 
-    /* Sections */
+    /* SECTIONS */
     section{padding:34px 0}
     .section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}
     .section-title h3{margin:0;font-size:20px}
@@ -148,6 +149,17 @@
     }
     .card h4{margin:0 0 8px;font-size:15px}
     .card p{margin:0;color:var(--muted);font-size:13px}
+
+    .card-img{
+      width:100%;
+      height:160px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      object-fit:cover;
+      margin-bottom:12px;
+      background: rgba(0,0,0,.12);
+    }
+
     .list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:10px}
     .list li{
       display:flex;gap:10px;align-items:flex-start;
@@ -165,7 +177,7 @@
       font-weight:900;font-size:12px;
     }
 
-    /* Donation */
+    /* DONATION */
     .donation{
       background: linear-gradient(135deg, rgba(96,165,250,.10), rgba(45,212,191,.10));
       border:1px solid rgba(255,255,255,.14);
@@ -200,7 +212,7 @@
     }
     .bank small{color:var(--muted)}
 
-    /* Contact */
+    /* CONTACT */
     .contact-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
@@ -211,9 +223,7 @@
       font-size:13px;
     }
     .chip a{color:var(--text);font-weight:650}
-    .form{
-      display:grid;gap:10px;margin-top:12px
-    }
+    .form{display:grid;gap:10px;margin-top:12px}
     .row{display:grid;grid-template-columns: 1fr 1fr;gap:10px}
     input, textarea{
       width:100%;
@@ -240,7 +250,7 @@
     .foot-grid b{color:var(--text)}
     .legal{margin-top:10px}
 
-    /* Responsive */
+    /* MOBILE */
     @media (max-width: 920px){
       .hero-grid{grid-template-columns:1fr}
       .donation{grid-template-columns:1fr}
@@ -249,6 +259,7 @@
       .row{grid-template-columns:1fr}
       .links{display:none}
       .menu-btn{display:inline-flex}
+      .logo-img{max-width:190px;height:38px}
     }
     .mobile-menu{
       display:none;
@@ -274,11 +285,8 @@
   <div class="nav">
     <div class="nav-inner">
       <a class="brand" href="#top" aria-label="ASPASIB">
-        <!-- Înlocuiește această „siglă” cu logo-ul tău:
-             1) fie pui imagine în loc (img),
-             2) fie păstrezi monograma. -->
-        <div class="logo" title="ASPASIB">A</div>
-        <div>
+        <img class="logo-img" src="logo-aspasib.jpg" alt="Logo ASPASIB" />
+        <div class="brand-text">
           <h1>ASPASIB</h1>
           <p>Asociația Părinților Județ Sibiu</p>
         </div>
@@ -289,6 +297,8 @@
         <a href="#obiective">Obiective</a>
         <a href="#proiecte">Proiecte</a>
         <a href="#implica-te">Implică-te</a>
+        <a href="#formular230">3,5%</a>
+        <a href="#donatii">Donații</a>
         <a href="#transparenta">Transparență</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -306,33 +316,33 @@
       <a href="#obiective">Obiective</a>
       <a href="#proiecte">Proiecte</a>
       <a href="#implica-te">Implică-te</a>
+      <a href="#formular230">Redirecționează 3,5%</a>
+      <a href="#donatii">Donații</a>
       <a href="#transparenta">Transparență</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- CONTENT -->
   <main id="top" class="wrap">
+    <!-- HERO -->
     <div class="hero">
       <div class="hero-grid">
         <div class="hero-card">
           <span class="kicker"><span class="k-dot"></span> ONG educațional • Județul Sibiu</span>
           <h2>Împreună pentru educația copiilor din județul Sibiu</h2>
           <p>
-            ASPASIB acționează pentru creșterea calitativă a învățământului preuniversitar,
-            consolidarea colaborării școală–comunitate și realizarea de parteneriate durabile,
-            având mereu în centru <b>interesul superior al elevului</b>.
+            ASPASIB acționează în scopul creșterii calitative a nivelului educațional al elevilor din
+            instituțiile de învățământ preuniversitar din județul Sibiu, dezvoltării relațiilor de colaborare
+            școală–comunitate și realizării de parteneriate durabile, având mereu în centru
+            <b>interesul superior al elevului</b>.
           </p>
 
           <div class="hero-actions">
             <a class="btn primary" href="#proiecte">Vezi proiectele</a>
             <a class="btn" href="#implica-te">Devino voluntar</a>
-            <a class="btn" href="#contact">Contact rapid</a>
+            <a class="btn" href="#formular230">Redirecționează 3,5%</a>
           </div>
-
-          <p class="hint" style="margin-top:14px">
-            *Poți înlocui monograma „A” cu logo-ul tău în 2 minute (instrucțiuni mai jos).
-          </p>
         </div>
 
         <aside class="side-card">
@@ -358,7 +368,7 @@
             <div class="icon">🏛️</div>
             <div>
               <b>Parteneriate & tradiție</b>
-              <span>Valorizăm tradițiile și lucrăm cu ONG-uri, instituții și mediul economic.</span>
+              <span>Valorizăm tradițiile și colaborăm cu ONG-uri, instituții și mediul economic.</span>
             </div>
           </div>
 
@@ -372,7 +382,7 @@
       <div class="section-title">
         <div>
           <h3>Despre ASPASIB</h3>
-          <p>O asociație a părinților, pentru elevi — cu energie modernă și colaborare practică.</p>
+          <p>O asociație a părinților, pentru elevi — modernă, prietenoasă și orientată spre rezultate.</p>
         </div>
       </div>
 
@@ -380,9 +390,9 @@
         <div class="card">
           <h4>Cine suntem</h4>
           <p>
-            Asociația Părinților Județ Sibiu – ASPASIB este o organizație non-profit care acționează
-            pentru creșterea calității educației elevilor din instituțiile de învățământ preuniversitar
-            din județul Sibiu, prin implicare, parteneriate și dialog constructiv.
+            Asociația Părinților Județ Sibiu – ASPASIB este o organizație non-profit care acționează pentru
+            creșterea calității educației elevilor din instituțiile de învățământ preuniversitar din județul Sibiu,
+            prin implicare, parteneriate și dialog constructiv.
           </p>
         </div>
         <div class="card">
@@ -400,7 +410,7 @@
       <div class="section-title">
         <div>
           <h3>Obiectivele noastre</h3>
-          <p>Direcții clare, orientate spre rezultate și binele elevilor.</p>
+          <p>Direcții clare, orientate spre binele elevilor și colaborare durabilă.</p>
         </div>
       </div>
 
@@ -418,16 +428,16 @@
           <h4>Colaborare & comunitate</h4>
           <p>Conectăm părinții, școala și comunitatea în jurul unor proiecte utile.</p>
           <ul class="list">
-            <li><span class="check">✓</span><span>Parteneriat viabil părinți–unități de învățământ</span></li>
-            <li><span class="check">✓</span><span>Dialog și inițiative locale</span></li>
+            <li><span class="check">✓</span><span>Parteneriat viabil între părinți și unitățile de învățământ</span></li>
+            <li><span class="check">✓</span><span>Inițiative locale și dialog constructiv</span></li>
           </ul>
         </div>
 
         <div class="card">
           <h4>Parteneriate & tradiție</h4>
-          <p>Lucrăm cu organizații, instituții și mediul economic, valorizând tradițiile.</p>
+          <p>Realizăm parteneriate și valorizăm tradițiile, cu respect pentru interesul elevilor.</p>
           <ul class="list">
-            <li><span class="check">✓</span><span>Parteneriate cu ONG-uri, cultură, educație</span></li>
+            <li><span class="check">✓</span><span>Colaborări cu ONG-uri, instituții și mediul economic</span></li>
             <li><span class="check">✓</span><span>Respectarea interesului superior al elevului</span></li>
           </ul>
         </div>
@@ -439,30 +449,39 @@
       <div class="section-title">
         <div>
           <h3>Proiecte & programe</h3>
-          <p>Poți porni cu această pagină „cadru” și adăugăm proiecte concrete pe măsură ce apar.</p>
+          <p>Putem publica aici proiectele curente și inițiativele viitoare, pe măsură ce se lansează.</p>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="card">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80"
+               alt="Activitate educațională la clasă" />
           <h4>Programe educaționale</h4>
-          <p>Ateliere, activități, resurse și inițiative care susțin elevii și cadrele didactice.</p>
+          <p>Ateliere, activități și resurse pentru elevi, părinți și comunitatea școlară.</p>
         </div>
+
         <div class="card">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
+               alt="Workshop educațional" />
           <h4>Evenimente & workshop-uri</h4>
-          <p>Întâlniri cu părinții, sesiuni tematice și evenimente comunitare pentru educație.</p>
+          <p>Întâlniri tematice, sesiuni de informare și evenimente comunitare pentru educație.</p>
         </div>
+
         <div class="card">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+               alt="Comunitate și voluntariat" />
           <h4>Inițiative comunitare</h4>
-          <p>Colaborări locale cu instituții, organizații și mediul economic, cu impact real.</p>
+          <p>Colaborări locale cu instituții și parteneri pentru proiecte cu impact real.</p>
         </div>
       </div>
 
       <div class="card" style="margin-top:14px">
-        <h4>Ai un proiect în minte?</h4>
-        <p>
-          Scrie-ne — suntem deschiși propunerilor care ajută elevii din județul Sibiu.
-        </p>
+        <h4>Ai o idee de proiect?</h4>
+        <p>Scrie-ne — suntem deschiși propunerilor care ajută elevii din județul Sibiu.</p>
         <div class="contact-line">
           <span class="chip">Email: <a href="mailto:aspasib.ro@gmail.com">aspasib.ro@gmail.com</a></span>
           <span class="chip">Telefon: <a href="tel:+40751285753">0751 285 753</a></span>
@@ -504,6 +523,35 @@
           </ul>
         </div>
       </div>
+
+      <p class="hint" style="margin-top:12px">
+        *Dacă vrei, îți pregătesc și un Google Form „Înscriere voluntar/partener” pe care îl integrezi aici.
+      </p>
+    </section>
+
+    <!-- FORMULAR 230 (discret) -->
+    <section id="formular230">
+      <div class="section-title">
+        <div>
+          <h3>Redirecționează 3,5% (Formular 230)</h3>
+          <p>Susține gratuit ASPASIB prin completarea online a Formularului 230.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="margin-bottom:6px">Completează online în câteva minute</h4>
+        <p>
+          Redirecționarea a 3,5% din impozitul pe venit nu te costă nimic și ajută direct proiectele educaționale din județul Sibiu.
+        </p>
+        <div class="contact-line" style="margin-top:14px">
+          <a class="btn primary"
+             href="https://formular230.ro/asociatia-parintilor-judet-sibiu-aspasib"
+             target="_blank" rel="noopener">
+            Completează Formularul 230
+          </a>
+          <a class="btn" href="#contact">Întrebări?</a>
+        </div>
+      </div>
     </section>
 
     <!-- DONATII -->
@@ -519,7 +567,7 @@
         <div>
           <h4>Donație directă</h4>
           <p>
-            Poți susține ASPASIB cu o donație în contul asociației. Dacă vrei, îți putem trimite și detalii pentru sponsorizări/parteneriate.
+            Poți susține ASPASIB cu o donație în contul asociației. Pentru sponsorizări/parteneriate, scrie-ne și revenim rapid.
           </p>
           <div class="contact-line">
             <span class="chip">Email: <a href="mailto:aspasib.ro@gmail.com">aspasib.ro@gmail.com</a></span>
@@ -551,7 +599,7 @@
           <ul class="list">
             <li><span class="check">✓</span><span><b>Denumire:</b> Asociația Părinților Județ Sibiu – ASPASIB</span></li>
             <li><span class="check">✓</span><span><b>CIF:</b> 48160049</span></li>
-            <li><span class="check">✓</span><span><b>Arie:</b> Județul Sibiu</span></li>
+            <li><span class="check">✓</span><span><b>Arie:</b> Județul Sibiu, România</span></li>
             <li><span class="check">✓</span><span><b>Email:</b> aspasib.ro@gmail.com</span></li>
             <li><span class="check">✓</span><span><b>Telefon:</b> 0751 285 753</span></li>
           </ul>
@@ -587,8 +635,8 @@
             <span class="chip">📞 <a href="tel:+40751285753">0751 285 753</a></span>
           </div>
           <p class="hint" style="margin-top:12px">
-            *Formularul de mai jos trimite mesajul către emailul vostru printr-un client de mail (nu stochează date).
-            Dacă vrei un formular care salvează automat răspunsuri, îți fac variantă Google Forms și o integrăm.
+            *Formularul de mai jos deschide aplicația de email (nu stochează date). Dacă vrei „formular cu răspunsuri salvate”,
+            îți fac varianta Google Forms și o integrăm aici/în Google Sites.
           </p>
         </div>
 
@@ -633,7 +681,6 @@
   </main>
 
   <script>
-    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile menu
@@ -647,7 +694,7 @@
       });
     }
 
-    // Smooth scroll for anchors (nice on desktop)
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const href = a.getAttribute("href");
@@ -656,7 +703,6 @@
         if (!el) return;
         e.preventDefault();
         el.scrollIntoView({behavior:"smooth", block:"start"});
-        // close mobile menu after click
         if (mobileMenu && window.innerWidth <= 920) mobileMenu.style.display = "none";
       });
     });
@@ -680,15 +726,10 @@
         "\nMesaj:\n" + message
       );
 
-      const mailto = "mailto:aspasib.ro@gmail.com?subject=" + subject + "&body=" + body;
-      window.location.href = mailto;
-
-      hint.textContent = "Se deschide aplicația de email. Dacă nu se deschide, copiezi adresa: aspasib.ro@gmail.com";
+      window.location.href = "mailto:aspasib.ro@gmail.com?subject=" + subject + "&body=" + body;
+      hint.textContent = "Se deschide aplicația de email. Dacă nu se deschide, scrie direct la aspasib.ro@gmail.com";
       form.reset();
     });
-
-    // (opțional) dacă vrei să schimbi monograma cu logo:
-    // Înlocuiește div.logo cu <img src="logo.png" ...> și urcă logo.png lângă index.html.
   </script>
 </body>
 </html>
