@@ -3,733 +3,243 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="ASPASIB – Asociația Părinților Județ Sibiu. Împreună pentru educația elevilor din învățământul preuniversitar." />
-  <meta name="theme-color" content="#0b2a55" />
+  <meta name="description" content="ASPASIB – Asociația Părinților Județ Sibiu. Împreună pentru educația elevilor." />
   <title>ASPASIB – Asociația Părinților Județ Sibiu</title>
 
   <style>
     :root{
       --bg:#0b1220;
-      --muted:#b8c4dd;
       --text:#eef3ff;
+      --muted:#b8c4dd;
       --brand:#2dd4bf;
       --line:rgba(255,255,255,.12);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
       --max:1100px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:
-      radial-gradient(1200px 600px at 15% -10%, rgba(96,165,250,.25), transparent 60%),
-      radial-gradient(1000px 600px at 90% 0%, rgba(45,212,191,.22), transparent 55%),
-      radial-gradient(800px 500px at 50% 110%, rgba(96,165,250,.12), transparent 60%),
-      var(--bg);
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
       color:var(--text);
-      line-height:1.5;
+      line-height:1.6;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    .wrap{max-width:var(--max);margin:auto;padding:24px}
 
     /* NAV */
     .nav{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.62);
-      border-bottom: 1px solid var(--line);
+      position:sticky;top:0;
+      background:rgba(11,18,32,.95);
+      border-bottom:1px solid var(--line);
+      z-index:10;
     }
     .nav-inner{
-      display:flex;align-items:center;gap:16px;justify-content:space-between;
-      max-width:var(--max);margin:0 auto;padding:14px 24px
+      max-width:var(--max);
+      margin:auto;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
-    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
     .logo-img{
-      height:42px;width:auto;max-width:240px;
-      border-radius:12px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(255,255,255,.18);
+      height:42px;
+      background:white;
       padding:6px 10px;
-      box-shadow: var(--shadow);
-      object-fit: contain;
+      border-radius:10px;
     }
-    .brand-text{display:none} /* logo-ul conține deja text; păstrăm meniu aerisit */
-
-    .links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-    .links a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:10px}
-    .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
-    .cta{display:flex;gap:10px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      padding:10px 12px;border-radius:12px;
-      font-size:13px;font-weight:650;
-      cursor:pointer;
-    }
-    .btn:hover{background:rgba(255,255,255,.07)}
-    .btn.primary{
-      border:1px solid rgba(45,212,191,.35);
-      background: linear-gradient(135deg, rgba(96,165,250,.18), rgba(45,212,191,.18));
-    }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(96,165,250,.26), rgba(45,212,191,.26))}
-    .menu-btn{display:none}
+    .links{display:flex;gap:14px;font-size:14px}
+    .links a{color:var(--muted)}
+    .links a:hover{color:white}
 
     /* HERO */
-    .hero{padding:48px 0 10px}
-    .hero-grid{display:grid;grid-template-columns: 1.2fr .8fr;gap:22px;align-items:stretch}
-    .hero-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:26px;
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-
-      /* imagine free Unsplash + overlay pentru lizibilitate */
+    .hero{
+      padding:60px 0;
       background:
-        linear-gradient(rgba(11,18,32,.78), rgba(11,18,32,.78)),
+        linear-gradient(rgba(11,18,32,.8), rgba(11,18,32,.8)),
         url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80');
       background-size:cover;
       background-position:center;
+      text-align:center;
     }
-    .kicker{
-      display:inline-flex;gap:8px;align-items:center;
-      font-size:12px;color:var(--muted);
-      padding:7px 10px;border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .k-dot{width:8px;height:8px;border-radius:999px;background:var(--brand)}
-    .hero h2{margin:14px 0 10px;font-size:38px;line-height:1.1}
-    .hero p{margin:0;color:var(--muted);font-size:15px;max-width:62ch}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .hero-actions a{padding:12px 14px;border-radius:14px}
-    .hero-actions .btn.primary{font-weight:750}
+    .hero h1{font-size:40px;margin-bottom:10px}
+    .hero p{color:var(--muted);max-width:700px;margin:auto}
 
-    .side-card{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:20px;
-      box-shadow: var(--shadow);
-      display:flex;flex-direction:column;gap:14px;
-    }
-    .side-card h3{margin:0;font-size:16px}
-    .pill{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:12px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-    }
-    .icon{
-      width:34px;height:34px;border-radius:12px;
-      background: rgba(96,165,250,.15);
-      border:1px solid rgba(96,165,250,.28);
-      display:grid;place-items:center;
-      flex:0 0 auto;
-    }
-    .pill b{display:block;font-size:13px;margin-bottom:2px}
-    .pill span{display:block;color:var(--muted);font-size:12px}
-
-    /* SECTIONS */
-    section{padding:34px 0}
-    .section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}
-    .section-title h3{margin:0;font-size:20px}
-    .section-title p{margin:0;color:var(--muted);font-size:13px;max-width:68ch}
-
-    .grid-3{display:grid;grid-template-columns: repeat(3,1fr);gap:14px}
-    .grid-2{display:grid;grid-template-columns: repeat(2,1fr);gap:14px}
-
+    section{padding:50px 0;border-bottom:1px solid var(--line)}
+    h2{margin-top:0}
+    .grid{display:grid;gap:20px}
+    .grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
     .card{
-      background: rgba(255,255,255,.04);
+      background:rgba(255,255,255,.05);
+      padding:20px;
+      border-radius:var(--radius);
       border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:18px;
-      box-shadow: var(--shadow);
     }
-    .card h4{margin:0 0 8px;font-size:15px}
-    .card p{margin:0;color:var(--muted);font-size:13px}
-
-    .card-img{
+    .card img{
       width:100%;
       height:160px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
       object-fit:cover;
+      border-radius:12px;
       margin-bottom:12px;
-      background: rgba(0,0,0,.12);
     }
-
-    .list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-    .list li{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-    }
-    .check{
-      width:20px;height:20px;border-radius:8px;
-      background: rgba(45,212,191,.16);
-      border:1px solid rgba(45,212,191,.30);
-      display:grid;place-items:center;
-      flex:0 0 auto;margin-top:1px;
-      color:var(--brand);
-      font-weight:900;font-size:12px;
-    }
-
-    /* DONATION */
-    .donation{
-      background: linear-gradient(135deg, rgba(96,165,250,.10), rgba(45,212,191,.10));
-      border:1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius);
-      padding:20px;
-      box-shadow: var(--shadow);
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:center;
-    }
-    .donation h4{margin:0 0 6px;font-size:16px}
-    .donation p{margin:0;color:var(--muted);font-size:13px}
-    .bank{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
-      border-radius: 16px;
-      padding:14px;
-      font-size:13px;
-      line-height:1.45;
-      color:var(--text);
-    }
-    .bank code{
+    .btn{
       display:inline-block;
-      padding:2px 6px;border-radius:8px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--text);
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-      font-size:12px;
-      word-break:break-all;
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--brand);
+      color:#000;
+      font-weight:600;
     }
-    .bank small{color:var(--muted)}
-
-    /* CONTACT */
-    .contact-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 12px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .chip a{color:var(--text);font-weight:650}
-    .form{display:grid;gap:10px;margin-top:12px}
-    .row{display:grid;grid-template-columns: 1fr 1fr;gap:10px}
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
-      color:var(--text);
-      outline:none;
-      font-size:14px;
-    }
-    textarea{min-height:110px;resize:vertical}
-    input::placeholder,textarea::placeholder{color:rgba(184,196,221,.7)}
-    .hint{color:var(--muted);font-size:12px;margin:0}
 
     footer{
-      border-top:1px solid var(--line);
-      margin-top:30px;
-      padding:22px 0 36px;
+      padding:30px 0;
+      text-align:center;
+      font-size:13px;
       color:var(--muted);
-      font-size:12px;
     }
-    .foot-grid{display:grid;grid-template-columns: 1.2fr .8fr;gap:14px}
-    .foot-grid b{color:var(--text)}
-    .legal{margin-top:10px}
-
-    /* MOBILE */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-      .donation{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-      .row{grid-template-columns:1fr}
-      .links{display:none}
-      .menu-btn{display:inline-flex}
-      .logo-img{max-width:190px;height:38px}
-    }
-    .mobile-menu{
-      display:none;
-      border-top:1px solid var(--line);
-      background: rgba(11,18,32,.75);
-      padding:10px 24px 16px;
-    }
-    .mobile-menu a{
-      display:block;
-      padding:10px 12px;
-      border-radius:12px;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      margin-top:10px;
-    }
-    .mobile-menu a:hover{color:var(--text)}
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="ASPASIB">
-        <img class="logo-img" src="logo-aspasib.jpg" alt="Logo ASPASIB" />
-        <div class="brand-text">
-          <h1>ASPASIB</h1>
-          <p>Asociația Părinților Județ Sibiu</p>
-        </div>
-      </a>
 
-      <nav class="links" aria-label="Meniu">
-        <a href="#despre">Despre noi</a>
-        <a href="#obiective">Obiective</a>
-        <a href="#proiecte">Proiecte</a>
-        <a href="#implica-te">Implică-te</a>
-        <a href="#formular230">3,5%</a>
-        <a href="#donatii">Donații</a>
-        <a href="#transparenta">Transparență</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="cta">
-        <a class="btn primary" href="#donatii">Susține educația</a>
-        <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">
-          Meniu
-        </button>
-      </div>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#despre">Despre noi</a>
-      <a href="#obiective">Obiective</a>
-      <a href="#proiecte">Proiecte</a>
-      <a href="#implica-te">Implică-te</a>
-      <a href="#formular230">Redirecționează 3,5%</a>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <img src="logo-aspasib.jpg" class="logo-img" alt="Logo ASPASIB">
+    <div class="links">
+      <a href="#despre">Despre</a>
+      <a href="#ghiduri">Ghiduri</a>
+      <a href="#formular230">3,5%</a>
       <a href="#donatii">Donații</a>
-      <a href="#transparenta">Transparență</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
+</div>
 
-  <!-- CONTENT -->
-  <main id="top" class="wrap">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-grid">
-        <div class="hero-card">
-          <span class="kicker"><span class="k-dot"></span> ONG educațional • Județul Sibiu</span>
-          <h2>Împreună pentru educația copiilor din județul Sibiu</h2>
-          <p>
-            ASPASIB acționează în scopul creșterii calitative a nivelului educațional al elevilor din
-            instituțiile de învățământ preuniversitar din județul Sibiu, dezvoltării relațiilor de colaborare
-            școală–comunitate și realizării de parteneriate durabile, având mereu în centru
-            <b>interesul superior al elevului</b>.
-          </p>
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <h1>Împreună pentru educația copiilor din județul Sibiu</h1>
+    <p>
+      ASPASIB susține creșterea calitativă a educației prin colaborare școală–părinți–comunitate
+      și respectarea interesului superior al elevului.
+    </p>
+  </div>
+</div>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="#proiecte">Vezi proiectele</a>
-            <a class="btn" href="#implica-te">Devino voluntar</a>
-            <a class="btn" href="#formular230">Redirecționează 3,5%</a>
-          </div>
-        </div>
+<div class="wrap">
 
-        <aside class="side-card">
-          <h3>Ce facem, pe scurt</h3>
+<!-- DESPRE -->
+<section id="despre">
+  <h2>Despre ASPASIB</h2>
+  <p>
+    Asociația Părinților Județ Sibiu – ASPASIB este o organizație non-profit care acționează
+    pentru dezvoltarea educației în județul Sibiu prin parteneriate durabile și implicare activă.
+  </p>
+</section>
 
-          <div class="pill">
-            <div class="icon">📚</div>
-            <div>
-              <b>Calitate educațională</b>
-              <span>Inițiative care susțin progresul elevilor în școli din județ.</span>
-            </div>
-          </div>
+<!-- GHIDURI -->
+<section id="ghiduri">
+  <h2>Ghiduri pentru părinți</h2>
 
-          <div class="pill">
-            <div class="icon">🤝</div>
-            <div>
-              <b>Școală – Comunitate</b>
-              <span>Construim colaborări reale între părinți, cadre didactice și instituții.</span>
-            </div>
-          </div>
+  <div class="grid grid-3">
 
-          <div class="pill">
-            <div class="icon">🏛️</div>
-            <div>
-              <b>Parteneriate & tradiție</b>
-              <span>Valorizăm tradițiile și colaborăm cu ONG-uri, instituții și mediul economic.</span>
-            </div>
-          </div>
-
-          <a class="btn primary" href="#donatii" style="margin-top:2px">Susține un proiect</a>
-        </aside>
-      </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80">
+      <h3>Bullying</h3>
+      <p>Ce este, cum îl recunoaștem și cum intervenim eficient.</p>
+      <a href="#bullying" class="btn">Citește</a>
     </div>
 
-    <!-- DESPRE -->
-    <section id="despre">
-      <div class="section-title">
-        <div>
-          <h3>Despre ASPASIB</h3>
-          <p>O asociație a părinților, pentru elevi — modernă, prietenoasă și orientată spre rezultate.</p>
-        </div>
-      </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80">
+      <h3>Teme</h3>
+      <p>Cum construim o rutină sănătoasă fără conflicte.</p>
+      <a href="#teme" class="btn">Citește</a>
+    </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h4>Cine suntem</h4>
-          <p>
-            Asociația Părinților Județ Sibiu – ASPASIB este o organizație non-profit care acționează pentru
-            creșterea calității educației elevilor din instituțiile de învățământ preuniversitar din județul Sibiu,
-            prin implicare, parteneriate și dialog constructiv.
-          </p>
-        </div>
-        <div class="card">
-          <h4>Misiune & viziune</h4>
-          <p>
-            <b>Misiune:</b> să contribuim la educație de calitate prin parteneriat real părinți–școală–comunitate.<br/>
-            <b>Viziune:</b> o comunitate educațională unită, în care fiecare copil are șansa să se dezvolte armonios.
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80">
+      <h3>Ecrane</h3>
+      <p>Reguli clare pentru utilizare echilibrată.</p>
+      <a href="#ecrane" class="btn">Citește</a>
+    </div>
 
-    <!-- OBIECTIVE -->
-    <section id="obiective">
-      <div class="section-title">
-        <div>
-          <h3>Obiectivele noastre</h3>
-          <p>Direcții clare, orientate spre binele elevilor și colaborare durabilă.</p>
-        </div>
-      </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80">
+      <h3>Anxietate</h3>
+      <p>Cum recunoaștem și cum sprijinim copilul.</p>
+      <a href="#anxietate" class="btn">Citește</a>
+    </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <h4>Educație mai bună</h4>
-          <p>Susținem inițiative care cresc nivelul calitativ al procesului educațional.</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Programe educaționale și activități complementare</span></li>
-            <li><span class="check">✓</span><span>Sprijin pentru proiecte în școli</span></li>
-          </ul>
-        </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80">
+      <h3>Orientare școlară</h3>
+      <p>Alegem potrivit, nu „perfect”.</p>
+      <a href="#orientare" class="btn">Citește</a>
+    </div>
 
-        <div class="card">
-          <h4>Colaborare & comunitate</h4>
-          <p>Conectăm părinții, școala și comunitatea în jurul unor proiecte utile.</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Parteneriat viabil între părinți și unitățile de învățământ</span></li>
-            <li><span class="check">✓</span><span>Inițiative locale și dialog constructiv</span></li>
-          </ul>
-        </div>
+  </div>
+</section>
 
-        <div class="card">
-          <h4>Parteneriate & tradiție</h4>
-          <p>Realizăm parteneriate și valorizăm tradițiile, cu respect pentru interesul elevilor.</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Colaborări cu ONG-uri, instituții și mediul economic</span></li>
-            <li><span class="check">✓</span><span>Respectarea interesului superior al elevului</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<!-- ARTICOLE COMPLETE -->
+<section id="bullying">
+  <h2>Bullying</h2>
+  <p>Bullying înseamnă comportamente repetate de umilire sau agresiune...</p>
+</section>
 
-    <!-- PROIECTE -->
-    <section id="proiecte">
-      <div class="section-title">
-        <div>
-          <h3>Proiecte & programe</h3>
-          <p>Putem publica aici proiectele curente și inițiativele viitoare, pe măsură ce se lansează.</p>
-        </div>
-      </div>
+<section id="teme">
+  <h2>Teme</h2>
+  <p>Temele sunt pentru exersare și autonomie, nu pentru stres zilnic...</p>
+</section>
 
-      <div class="grid-3">
-        <div class="card">
-          <img class="card-img"
-               src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80"
-               alt="Activitate educațională la clasă" />
-          <h4>Programe educaționale</h4>
-          <p>Ateliere, activități și resurse pentru elevi, părinți și comunitatea școlară.</p>
-        </div>
+<section id="ecrane">
+  <h2>Ecrane</h2>
+  <p>Stabiliți reguli clare: fără ecrane înainte de somn...</p>
+</section>
 
-        <div class="card">
-          <img class="card-img"
-               src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
-               alt="Workshop educațional" />
-          <h4>Evenimente & workshop-uri</h4>
-          <p>Întâlniri tematice, sesiuni de informare și evenimente comunitare pentru educație.</p>
-        </div>
+<section id="anxietate">
+  <h2>Anxietate</h2>
+  <p>Anxietatea este o teamă intensă. Ajutați prin validare și pași mici...</p>
+</section>
 
-        <div class="card">
-          <img class="card-img"
-               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
-               alt="Comunitate și voluntariat" />
-          <h4>Inițiative comunitare</h4>
-          <p>Colaborări locale cu instituții și parteneri pentru proiecte cu impact real.</p>
-        </div>
-      </div>
+<section id="orientare">
+  <h2>Orientare școlară</h2>
+  <p>Alegeți direcția potrivită pe baza intereselor și valorilor copilului...</p>
+</section>
 
-      <div class="card" style="margin-top:14px">
-        <h4>Ai o idee de proiect?</h4>
-        <p>Scrie-ne — suntem deschiși propunerilor care ajută elevii din județul Sibiu.</p>
-        <div class="contact-line">
-          <span class="chip">Email: <a href="mailto:aspasib.ro@gmail.com">aspasib.ro@gmail.com</a></span>
-          <span class="chip">Telefon: <a href="tel:+40751285753">0751 285 753</a></span>
-        </div>
-      </div>
-    </section>
+<!-- FORMULAR 230 -->
+<section id="formular230">
+  <h2>Redirecționează 3,5%</h2>
+  <p>Susține gratuit ASPASIB prin completarea online a Formularului 230.</p>
+  <a href="https://formular230.ro/asociatia-parintilor-judet-sibiu-aspasib" target="_blank" class="btn">
+    Completează Formularul 230
+  </a>
+</section>
 
-    <!-- IMPLICA-TE -->
-    <section id="implica-te">
-      <div class="section-title">
-        <div>
-          <h3>Implică-te</h3>
-          <p>Voluntar, membru, partener sau susținător — orice ajutor contează.</p>
-        </div>
-      </div>
+<!-- DONATII -->
+<section id="donatii">
+  <h2>Donații</h2>
+  <p>
+    Asociația Părinților Județ Sibiu – ASPASIB<br>
+    CIF: 48160049<br>
+    IBAN: RO40BTRLRONCRT0672957001<br>
+    Banca Transilvania – Sucursala Sibiu
+  </p>
+</section>
 
-      <div class="grid-2">
-        <div class="card">
-          <h4>Devino voluntar</h4>
-          <p>
-            Dacă vrei să te implici în proiecte educaționale, organizare de evenimente sau comunicare,
-            te așteptăm în echipă.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Organizare evenimente</span></li>
-            <li><span class="check">✓</span><span>Suport logistic / resurse</span></li>
-            <li><span class="check">✓</span><span>Comunicare & comunitate</span></li>
-          </ul>
-        </div>
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: aspasib.ro@gmail.com<br>Telefon: 0751 285 753</p>
+</section>
 
-        <div class="card">
-          <h4>Devino partener</h4>
-          <p>
-            Reprezinți o instituție, o școală, un ONG sau o companie? Putem construi împreună proiecte durabile.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Parteneriate educaționale și culturale</span></li>
-            <li><span class="check">✓</span><span>Inițiative locale cu impact</span></li>
-          </ul>
-        </div>
-      </div>
+</div>
 
-      <p class="hint" style="margin-top:12px">
-        *Dacă vrei, îți pregătesc și un Google Form „Înscriere voluntar/partener” pe care îl integrezi aici.
-      </p>
-    </section>
+<footer>
+  © 2026 ASPASIB – Județul Sibiu, România
+</footer>
 
-    <!-- FORMULAR 230 (discret) -->
-    <section id="formular230">
-      <div class="section-title">
-        <div>
-          <h3>Redirecționează 3,5% (Formular 230)</h3>
-          <p>Susține gratuit ASPASIB prin completarea online a Formularului 230.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <h4 style="margin-bottom:6px">Completează online în câteva minute</h4>
-        <p>
-          Redirecționarea a 3,5% din impozitul pe venit nu te costă nimic și ajută direct proiectele educaționale din județul Sibiu.
-        </p>
-        <div class="contact-line" style="margin-top:14px">
-          <a class="btn primary"
-             href="https://formular230.ro/asociatia-parintilor-judet-sibiu-aspasib"
-             target="_blank" rel="noopener">
-            Completează Formularul 230
-          </a>
-          <a class="btn" href="#contact">Întrebări?</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- DONATII -->
-    <section id="donatii">
-      <div class="section-title">
-        <div>
-          <h3>Susține educația</h3>
-          <p>Donațiile ajută la implementarea proiectelor pentru elevii din județul Sibiu.</p>
-        </div>
-      </div>
-
-      <div class="donation">
-        <div>
-          <h4>Donație directă</h4>
-          <p>
-            Poți susține ASPASIB cu o donație în contul asociației. Pentru sponsorizări/parteneriate, scrie-ne și revenim rapid.
-          </p>
-          <div class="contact-line">
-            <span class="chip">Email: <a href="mailto:aspasib.ro@gmail.com">aspasib.ro@gmail.com</a></span>
-            <span class="chip">Telefon: <a href="tel:+40751285753">0751 285 753</a></span>
-          </div>
-        </div>
-
-        <div class="bank" aria-label="Date bancare donații">
-          <div><small>Denumire:</small> <b>Asociația Părinților Județ Sibiu – ASPASIB</b></div>
-          <div style="margin-top:8px"><small>CIF:</small> <b>48160049</b></div>
-          <div style="margin-top:8px"><small>Cont (IBAN):</small><br/><code>RO40BTRLRONCRT0672957001</code></div>
-          <div style="margin-top:8px"><small>Bancă:</small> <b>Banca Transilvania – Sucursala Sibiu</b></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRANSPARENTA -->
-    <section id="transparenta">
-      <div class="section-title">
-        <div>
-          <h3>Documente & transparență</h3>
-          <p>O organizație credibilă comunică deschis. Aici poți publica documente și rapoarte.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4>Date oficiale</h4>
-          <ul class="list">
-            <li><span class="check">✓</span><span><b>Denumire:</b> Asociația Părinților Județ Sibiu – ASPASIB</span></li>
-            <li><span class="check">✓</span><span><b>CIF:</b> 48160049</span></li>
-            <li><span class="check">✓</span><span><b>Arie:</b> Județul Sibiu, România</span></li>
-            <li><span class="check">✓</span><span><b>Email:</b> aspasib.ro@gmail.com</span></li>
-            <li><span class="check">✓</span><span><b>Telefon:</b> 0751 285 753</span></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h4>Ce poți adăuga aici</h4>
-          <p>Recomandat pentru parteneri și finanțări:</p>
-          <ul class="list">
-            <li><span class="check">✓</span><span>Statut (PDF)</span></li>
-            <li><span class="check">✓</span><span>Raport anual de activitate</span></li>
-            <li><span class="check">✓</span><span>Plan anual / proiecte</span></li>
-            <li><span class="check">✓</span><span>Politică GDPR</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-title">
-        <div>
-          <h3>Contact</h3>
-          <p>Scrie-ne și revenim cât de repede putem.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4>Contact rapid</h4>
-          <div class="contact-line">
-            <span class="chip">📧 <a href="mailto:aspasib.ro@gmail.com">aspasib.ro@gmail.com</a></span>
-            <span class="chip">📞 <a href="tel:+40751285753">0751 285 753</a></span>
-          </div>
-          <p class="hint" style="margin-top:12px">
-            *Formularul de mai jos deschide aplicația de email (nu stochează date). Dacă vrei „formular cu răspunsuri salvate”,
-            îți fac varianta Google Forms și o integrăm aici/în Google Sites.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Trimite un mesaj</h4>
-          <form class="form" id="contactForm">
-            <div class="row">
-              <input required name="name" placeholder="Nume" autocomplete="name" />
-              <input required name="email" type="email" placeholder="Email" autocomplete="email" />
-            </div>
-            <input name="phone" placeholder="Telefon (opțional)" autocomplete="tel" />
-            <textarea required name="message" placeholder="Mesajul tău..."></textarea>
-            <button class="btn primary" type="submit">Trimite</button>
-            <p class="hint" id="formHint"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="foot-grid">
-        <div>
-          <b>ASPASIB</b><br/>
-          Asociația Părinților Județ Sibiu – ASPASIB<br/>
-          Județul Sibiu, România
-          <div class="legal">
-            <b>GDPR:</b> Datele transmise prin formularele de pe acest site sunt utilizate exclusiv pentru comunicare
-            și nu sunt transmise către terți, conform legislației în vigoare privind protecția datelor cu caracter personal.
-          </div>
-        </div>
-        <div>
-          <b>Date oficiale</b><br/>
-          CIF: 48160049<br/>
-          IBAN: <span style="word-break:break-all">RO40BTRLRONCRT0672957001</span><br/>
-          BT – Sucursala Sibiu<br/>
-          Email: <a href="mailto:aspasib.ro@gmail.com" style="color:var(--text);font-weight:650">aspasib.ro@gmail.com</a><br/>
-          Telefon: <a href="tel:+40751285753" style="color:var(--text);font-weight:650">0751 285 753</a><br/>
-          <div style="margin-top:10px">© <span id="year"></span> ASPASIB. Toate drepturile rezervate.</div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile menu
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    if (menuBtn) {
-      menuBtn.addEventListener("click", () => {
-        const open = mobileMenu.style.display === "block";
-        mobileMenu.style.display = open ? "none" : "block";
-        menuBtn.setAttribute("aria-expanded", String(!open));
-      });
-    }
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href");
-        if (!href || href === "#") return;
-        const el = document.querySelector(href);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({behavior:"smooth", block:"start"});
-        if (mobileMenu && window.innerWidth <= 920) mobileMenu.style.display = "none";
-      });
-    });
-
-    // Contact form -> mailto
-    const form = document.getElementById("contactForm");
-    const hint = document.getElementById("formHint");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = (data.get("name") || "").toString().trim();
-      const email = (data.get("email") || "").toString().trim();
-      const phone = (data.get("phone") || "").toString().trim();
-      const message = (data.get("message") || "").toString().trim();
-
-      const subject = encodeURIComponent("Mesaj site ASPASIB – " + name);
-      const body = encodeURIComponent(
-        "Nume: " + name + "\n" +
-        "Email: " + email + "\n" +
-        (phone ? ("Telefon: " + phone + "\n") : "") +
-        "\nMesaj:\n" + message
-      );
-
-      window.location.href = "mailto:aspasib.ro@gmail.com?subject=" + subject + "&body=" + body;
-      hint.textContent = "Se deschide aplicația de email. Dacă nu se deschide, scrie direct la aspasib.ro@gmail.com";
-      form.reset();
-    });
-  </script>
 </body>
 </html>
